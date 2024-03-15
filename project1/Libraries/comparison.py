@@ -7,7 +7,7 @@ class comparison(object):
    def __init__(self):
       pass
 
-   @keyword('Expect ${first_number} greater than ${second_number}')
-   def _greater_than(self, first_number, second_number):
-      if (int(first_number) < int(second_number)):
-         raise ValueError(f'Second_number {second_number} is higher or equal to the first_number {first_number}.')
+   @keyword('Expect ${count} is multiple')
+   def _multiple_count(self, count):
+      if (int(count) < 2):
+         raise ValueError(f'{count} is multiple.')

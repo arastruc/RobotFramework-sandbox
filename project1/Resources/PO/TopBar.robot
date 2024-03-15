@@ -3,8 +3,8 @@ Library  SeleniumLibrary
 
 *** Keywords ***
 
-Click On Sign In
+Click "Sign In" Link
     Click Link    Sign In
 
-Click On Sign Out
+Click "Sign Out" Link
     Click Link    Sign Out

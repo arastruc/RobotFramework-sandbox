@@ -2,21 +2,27 @@
 Library    SeleniumLibrary
 Library    ../../Libraries/comparison.py
 
-*** Keywords ***
-Verify Page Loaded
-    Location Should Contain    customers.html
-    Wait Until Page Contains  Our Happy Customers
+*** Variables ***
 
-Click On Add New Customer
+${ADD_CUSTOMER_SUCESS_TITLE}=    Success
+${ADD_CUSTOMER_SUCESS_LABEL}=    Success! New customer added.
+${CUSTOMER_URL}=    customers.html
+${CUSTOMER_TITLE}=    Our Happy Customers
+${CUSTOMER_ROW_LOCATOR}=    //html/body/div/div/table/tbody/tr
+
+*** Keywords ***
+
+Click On "Add New Customer" Button
     Click Link    New Customer
 
-Verify Page With New Customer Loaded
-    Page Should Contain    Success
-    Page Should Contain    Success! New customer added.
-
 Verify Multiples Customers Are Displayed
-    ${min_customer_number}=    Set Variable    2
-    ${customer_number}=    Get Element Count    //html/body/div/div/table/tbody/tr
+    ${customer_number}=    Get Element Count    ${CUSTOMER_ROW_LOCATOR}
+    Expect ${customer_number} is multiple
 
-    # Comparison not working need to add custom method (problem with casting string and integer)
-    Expect ${customer_number} greater than ${min_customer_number}
+Verify Page Loaded
+    Location Should Contain    ${CUSTOMER_URL}
+    Wait Until Page Contains  ${CUSTOMER_TITLE}
+
+Verify Page With New Customer Loaded
+    Page Should Contain    ${ADD_CUSTOMER_SUCESS_TITLE}
+    Page Should Contain    ${ADD_CUSTOMER_SUCESS_LABEL}

@@ -1,114 +1,103 @@
 *** Settings ***
 Documentation    This is some basic info about the whole suite
 Resource    ../Resources/Common.robot
-Resource    ../Resources/PO/AddCustomer.robot
-Resource    ../Resources/PO/Login.robot
-Resource    ../Resources/PO/Home.robot
-Resource    ../Resources/PO/Customer.robot
-Resource    ../Resources/PO/TopBar.robot
-Resource    ../Resources/PO/Logout.robot
+Resource    ../Resources/CrmApp.robot
 
 Test Setup    Common.Open And Resize Browser
 Test Teardown    Common.Wait And Close Browser
 
-
 *** Variables ***
+${BROWSER}=        firefox
+&{CUSTOMER_PROFILE_DICT}=    
+...    email=email@email.com    
+...    first_name=firstName    
+...    last_name=lastName    
+...    city=Dallas    
+...    state_value=TX    
+...    state_label=Texas
+@{MY_LIST}=     toto    tutu    titi    fifi    loulou
+${VALID_LOGIN_EMAIL}=    toto@gmail.com
+${VALID_LOGIN_PASSWORD}=    toto
+
 
 
 *** Test Cases ***
 
+# Log List Variables
+#     FOR    ${item}    IN    @{MY_LIST}
+#         Log    ${item}
+#     END
+#     Log    ${MY_LIST}[2]
+
+# Log Dict Variables
+#     FOR   ${key}    ${value}    IN    &{MY_DICT}
+#         Log Many    ${key}    ${value}
+#         Log    ${value}
+#     END
+
+#     Log    Just Password
+#     Log    ${MY_DICT}[password]
+
 Home page should load	
     [Documentation]    La page d'accueil s'affiche
     [Tags]    1001    Smoke    Home
-
-    Home.Verify Page Loaded
+    
+    CrmApp.Go to "Home" Page
 
 Login should succeed with valid credentials	
     [Documentation]    L'utilisateur se connecte avec ses identifiants
     [Tags]    1002    Smoke    Login
 
-    Home.Verify Page Loaded
-
-    TopBar.Click On Sign In
-
-    Login.Verify Page Loaded
-    Login.Sign In
-
-    Customer.Verify Page Loaded
+    CrmApp.Go to "Home" Page
+    CrmApp.Go to "Login" Page
+    CrmApp.Login with valid credentials    ${VALID_LOGIN_EMAIL}    ${VALID_LOGIN_PASSWORD}
 
 Login should fail with missing credentials	
     [Documentation]    L'utilisateur reste bloqué sur la page d'accueil si il ne donne pas les bons identifiants
     [Tags]    1003    Functional    Login
 
-    Home.Verify Page Loaded
+    CrmApp.Go to "Home" Page
+    CrmApp.Go to "Login" Page
+    CrmApp.Login With Invalid Credentials
 
-    TopBar.Click On Sign In
 
-    Login.Verify Page Loaded
-    Login.Sign In With Wrong Credentials
-
-"Remember me" checkbox should persist email address	
-    [Documentation]    Le bouton Remember me permet de garder en mémoire les identifiants après la déconnexion
-    [Tags]    1004    Functional    Login
-
-    Home.Verify Page Loaded
-
-    TopBar.Click On Sign In
-
-    Login.Verify Page Loaded
-    Login.Sign In
-
-    TopBar.Click On Sign Out
-    TopBar.Click On Sign In
-
-    Login.Verify Page Loaded
-    Login.Should Display login and password
-
-Should be able to log out	
+Logged in user should be able to log out	
     [Documentation]    L'utilisateur peut se déconnecter en cliquant sur le bouton
     [Tags]    1005    Functional    Login
 
-    Home.Verify Page Loaded
-
-    TopBar.Click On Sign In
-
-    Login.Verify Page Loaded
-    Login.Sign In
-
-    TopBar.Click On Sign Out
-
-    Logout.Verify Page Loaded
+    CrmApp.Go to "Home" Page
+    CrmApp.Go to "Login" Page
+    CrmApp.Login with valid credentials    ${VALID_LOGIN_EMAIL}    ${VALID_LOGIN_PASSWORD}
+    CrmApp.Log out
 
 Customers page should display multiple customers	
     [Documentation]    La page de clients doit afficher plusieurs clients
-    [Tags]    1006    Smoke    Contacts
+    [Tags]    1006    Functional    Contacts
 
-    Home.Verify Page Loaded
+    CrmApp.Go to "Home" Page
+    CrmApp.Go to "Login" Page
+    CrmApp.Login with valid credentials    ${VALID_LOGIN_EMAIL}    ${VALID_LOGIN_PASSWORD}
+    CrmApp.Check That There Are Multiples Customers
 
-    TopBar.Click On Sign In
-
-    Login.Verify Page Loaded
-    Login.Sign In
-
-    Customer.Verify Page Loaded
-    Customer.Verify Multiples Customers Are Displayed
-
-Should be able to cancel adding new customer and back to customer page
+Logged in user should be able to cancel adding new customer and back to customer page
 	
     [Documentation]    This is some basic info about the test
-    [Tags]    1007    Smoke    Home
+    [Tags]    1007    Functional    Customer
 
-    Home.Verify Page Loaded
-    TopBar.Click On Sign In
+    CrmApp.Go to "Home" Page
+    CrmApp.Go to "Login" Page
 
-    Login.Verify Page Loaded
-    Login.Sign In
-
-    Customer.Verify Page Loaded
-    Customer.Click on Add New Customer
-    AddCustomer.Cancel Adding Customer
-    Customer.Verify Page Loaded
-    Run Keyword And Expect Error    Page should have contained text 'Success' but did not.    Customer.Verify Page With New Customer Loaded
+    CrmApp.Login with valid credentials    ${VALID_LOGIN_EMAIL}    ${VALID_LOGIN_PASSWORD}
+    CrmApp.Go to "New Customer" Page
     
+Should be able to add new customer	
+    [Documentation]    This is some basic info about the test
+    [Tags]    1008    Functional    Customer
 
-    
+    CrmApp.Go to "Home" Page
+    CrmApp.Go to "Login" Page
+
+    CrmApp.Login with valid credentials    ${VALID_LOGIN_EMAIL}    ${VALID_LOGIN_PASSWORD}
+
+    CrmApp.Go to "New Customer" Page
+    CrmApp.Add A New Customer   ${CUSTOMER_PROFILE_DICT}
