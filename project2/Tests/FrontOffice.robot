@@ -14,28 +14,50 @@ Landing page should be displayed
     [Tags]    1001    Smoke    Landing
     FrontOfficeApp.Go to Landing Page
 
-"Services" Section should display Three Offers
-    [Tags]    1002    Functional    Services
+Should be able to access "Services" Page
+    [Tags]    10030    Smoke    Services
     FrontOfficeApp.Go to Landing Page
-    FrontOfficeApp.Three items are displayed in "Services" Section
+    FrontOfficeApp.Go to "Services" Page
 
-"PortFolio" Section should display Six Offers
-    [Tags]    1003    Functional    Portfolio
+"Services" Page should match requirements
+    [Tags]    10031    Functional    Services
     FrontOfficeApp.Go to Landing Page
-    FrontOfficeApp.Six items are displayed in "PortFolio" Section
+    FrontOfficeApp.Go to "Services" Page
+    FrontOfficeApp.Validate "Services" Page
 
-
-"About" Section should display "4 News" and "Inviting Bubble"
-    [Tags]    1004    Functional    About
+Should be able to access "PortFolio" Page
+    [Tags]    10030    Smoke    PortFolio
     FrontOfficeApp.Go to Landing Page
-    FrontOfficeApp.Four news are displayed in "About" Section With An Invited Image
+    FrontOfficeApp.Go to "PortFolio" Page
 
-"Team" Section should display "3 Partners"
-    [Tags]    1005    Functional    Team
+"PortFolio" Page should match requirements
+    [Tags]    10031    Functional    PortFolio
     FrontOfficeApp.Go to Landing Page
-    FrontOfficeApp.Three partners are displayed in "Team" Section
+    FrontOfficeApp.Go to "PortFolio" Page
+    FrontOfficeApp.Validate "PortFolio" Page
 
-"Contact" Section should display a contact formula
+Should be able to access "About" Page
+    [Tags]    10040    Smoke    About
+    FrontOfficeApp.Go to Landing Page
+    FrontOfficeApp.Go to "About" Page
+
+"About" Page should match requirements
+    [Tags]    10041    Functional    About
+    FrontOfficeApp.Go to Landing Page
+    FrontOfficeApp.Go to "About" Page
+    FrontOfficeApp.Validate "About" Page
+
+Should be able to access "Team" Page
+    [Tags]    10050    Smoke    Team
+    FrontOfficeApp.Go to Landing Page
+    FrontOfficeApp.Go to "Team" Page
+
+"Team" Page should match requirements
+    [Tags]    10051    Functional    Team
+    FrontOfficeApp.Go to Landing Page
+    FrontOfficeApp.Validate "Team" Page
+
+Should be able to access "Contact" Page
     [Tags]    1006    Functional    Contact
     FrontOfficeApp.Go to Landing Page
-    FrontOfficeApp.A contact form is displayed in "Contact" Section
+    FrontOfficeApp.Go to "Contact" Page

@@ -15,29 +15,42 @@ Go to Landing Page
     Landing.Verify Page Loaded
     TopNav.Verify Page Loaded
 
-Three items are displayed in "Services" Section
+### Services ##
+Go to "Services" Page
     TopNav.Navigate to "Services"
     Services.Verify Page Loaded
+
+Validate "Services" Page
     Services.Verify "Three Services" Displayed
 
-Six items are displayed in "PortFolio" Section
-    TopNav.Navigate to "Portfolio"
+### PortFolio ##
+Go to "PortFolio" Page
+    TopNav.Navigate to "PortFolio"
     PortFolio.Verify Page Loaded
+
+Validate "PortFolio" Page
     PortFolio.Verify "Six Items" Displayed
 
 
-Four news are displayed in "About" Section With An Invited Image
+### ABOUT ##
+Go to "About" Page
     TopNav.Navigate to "About"
     About.Verify Page Loaded
+   
+Validate "About" Page
     About.Verify 4 "News" are Displayed
     About.Verify "Inviting News" is Displayed
 
-Three partners are displayed in "Team" Section
+### TEAM ##
+Go to "Team" Page
     TopNav.Navigate to "Team"
     Team.Verify Page Loaded
+
+Validate "Team" Page
     Team.Verify 3 "Partners" are Displayed
 
-A contact form is displayed in "Contact" Section
+
+### CONTACT ##
+Go to "Contact" Page
     TopNav.Navigate to "Contact"
     Contact.Verify Page Loaded
-  
