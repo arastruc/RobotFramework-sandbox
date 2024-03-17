@@ -4,7 +4,7 @@ Library  SeleniumLibrary
 
 *** Variables ***
 ${HOME_HEADER_LABEL}=    Customers Are Priority One!
-${HOME_URL}=    https://automationplayground.com/crm/
+${HOME_URL}=             https://automationplayground.com/crm/
 
 
 *** Keywords ***

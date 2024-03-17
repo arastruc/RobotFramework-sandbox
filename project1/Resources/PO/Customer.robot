@@ -6,9 +6,9 @@ Library    ../../Libraries/comparison.py
 
 ${ADD_CUSTOMER_SUCESS_TITLE}=    Success
 ${ADD_CUSTOMER_SUCESS_LABEL}=    Success! New customer added.
-${CUSTOMER_URL}=    customers.html
-${CUSTOMER_TITLE}=    Our Happy Customers
-${CUSTOMER_ROW_LOCATOR}=    //html/body/div/div/table/tbody/tr
+${CUSTOMER_URL}=                 customers.html
+${CUSTOMER_TITLE}=               Our Happy Customers
+${CUSTOMER_ROW_LOCATOR}=         //html/body/div/div/table/tbody/tr
 
 *** Keywords ***
 
@@ -21,7 +21,7 @@ Verify Multiples Customers Are Displayed
 
 Verify Page Loaded
     Location Should Contain    ${CUSTOMER_URL}
-    Wait Until Page Contains  ${CUSTOMER_TITLE}
+    Wait Until Page Contains   ${CUSTOMER_TITLE}
 
 Verify Page With New Customer Loaded
     Page Should Contain    ${ADD_CUSTOMER_SUCESS_TITLE}
