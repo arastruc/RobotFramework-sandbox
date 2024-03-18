@@ -8,13 +8,6 @@ Test Teardown    Common.Wait And Close Browser
 
 *** Variables ***
 ${BROWSER}=        firefox
-&{CUSTOMER_PROFILE_DICT}=    
-...    email=email@email.com    
-...    first_name=firstName    
-...    last_name=lastName    
-...    city=Dallas    
-...    state_value=TX    
-...    state_label=Texas
 @{MY_LIST}=     toto    tutu    titi    fifi    loulou
 ${VALID_LOGIN_EMAIL}=    toto@gmail.com
 ${VALID_LOGIN_PASSWORD}=    toto
@@ -100,4 +93,4 @@ Should be able to add new customer
     CrmApp.Login with valid credentials    ${VALID_LOGIN_EMAIL}    ${VALID_LOGIN_PASSWORD}
 
     CrmApp.Go to "New Customer" Page
-    CrmApp.Add A New Customer   ${CUSTOMER_PROFILE_DICT}
+    CrmApp.Add A New Customer 

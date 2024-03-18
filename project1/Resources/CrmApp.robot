@@ -1,4 +1,7 @@
 *** Settings ***
+Library     Dialogs
+Library     BuiltIn
+Library     Collections
 Resource    PO/AddCustomer.robot
 Resource    PO/Login.robot
 Resource    PO/Home.robot
@@ -6,13 +9,32 @@ Resource    PO/Customer.robot
 Resource    PO/TopBar.robot
 Resource    PO/Logout.robot
 
+*** Variables ***
+&{FIRST_CUSTOMER_PROFILE_DICT}=    
+...    email=profile1@email.com    
+...    first_name=profile1    
+...    last_name=lastName    
+...    city=Dallas    
+...    state_value=TX    
+...    state_label=Texas
+
+&{SECOND_CUSTOMER_PROFILE_DICT}=    
+...    email=profile2@email.com    
+...    first_name=profile2    
+...    last_name=lastName    
+...    city=Washington    
+...    state_value=DC    
+...    state_label=District of Columbia
 
 *** Keywords ***
 
 Add A New Customer
-    [Arguments]    ${customer_profile}
     # AddCustomer.Fill Customer Form with Anonym Profile
-    AddCustomer.Fill "Customer Form" with Known Profile    ${customer_profile}
+    ${selected_customer_profile}=  Get Selection From User          Which user?    User1    User2
+
+    Run Keyword if    "${selected_customer_profile}" == "User1"    AddCustomer.Fill "Customer Form" with Known Profile   ${FIRST_CUSTOMER_PROFILE_DICT}
+    Run Keyword if    "${selected_customer_profile}" == "User2"    AddCustomer.Fill "Customer Form" with Known Profile   ${SECOND_CUSTOMER_PROFILE_DICT}
+ 
     AddCustomer.Submit Customer
     Customer.Verify Page With New Customer Loaded
 

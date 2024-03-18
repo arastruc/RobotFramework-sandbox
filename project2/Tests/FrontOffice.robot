@@ -2,17 +2,29 @@
 Resource    ../Resources/Common.robot
 Resource    ../Resources/FrontOfficeApp.robot
 
-Test Setup    Common.Open And Resize Browser
+# Test Setup    Common.Open And Resize Browser
+Test Setup       Common.Open Manually And Resize Browser
 Test Teardown    Common.Wait And Close Browser
 
 *** Variables ***
 ${BROWSER}=        firefox
 
+
+*** Keywords ***
+Failed Keyword
+    Page Should Contain Link    id:toto
+
 *** Test Cases ***
 
 Landing page should be displayed	
     [Tags]    1001    Smoke    Landing
+    Set Global Variable    ${OUTPUT_DIR}    C:\\Users\\aastr\\OneDrive\\Documents\\Roboframework\\project2\\Results
     FrontOfficeApp.Go to Landing Page
+    Run Keyword And Ignore Error       Failed Keyword
+    Run Keyword And Warn On Failure    Failed Keyword
+    Comment    ${unset_variable}
+    Log    ${OUTPUT_DIR}
+    Log Variables
 
 Should be able to access "Services" Page
     [Tags]    10030    Smoke    Services
