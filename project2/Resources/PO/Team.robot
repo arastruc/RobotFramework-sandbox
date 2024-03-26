@@ -13,7 +13,7 @@ ${TEAM_THIRD_PARTNER_NAME}=         Diana Pertersen
  
 *** Keywords ***
 Verify 3 "Partners" are Displayed
-    ${partner_count}=            SeleniumLibrary.Get Element Count            ${TEAM_PARTNER_LOCATOR}
+    ${partner_count}=              Get Element Count            ${TEAM_PARTNER_LOCATOR}
     Should Be True                 ${partner_count} == ${TEAM_PARTNER_COUNT}
  
     Page Should Contain Element    ${TEAM_PARTNER_LOCATOR}                    ${TEAM_FIRST_PARTNER_NAME}
