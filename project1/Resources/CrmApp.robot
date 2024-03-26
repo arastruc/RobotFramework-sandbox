@@ -17,6 +17,7 @@ Resource    PO/Logout.robot
 ...    city=Dallas    
 ...    state_value=TX    
 ...    state_label=Texas
+...    gender= male
 
 &{SECOND_CUSTOMER_PROFILE_DICT}=    
 ...    email=profile2@email.com    
@@ -25,6 +26,7 @@ Resource    PO/Logout.robot
 ...    city=Washington    
 ...    state_value=DC    
 ...    state_label=District of Columbia
+...    gender=female
 
 *** Keywords ***
 

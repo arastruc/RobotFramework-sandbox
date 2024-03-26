@@ -2,6 +2,8 @@
 Library  SeleniumLibrary
 
 *** Variables ***
+
+${BUTTON_GENDER_NAME}=     gender
 ${CHECKBOX_RECEIVING_PROMOS_NAME}=     name:promos-name
 ${INPUT_CUSTOMER_EMAIL_ID}=     id:EmailAddress
 ${INPUT_FIRST_NAME_ID}=     id:FirstName
@@ -23,18 +25,18 @@ Fill "Customer Form" with Anonym Profile
     Fill LastName    Robert
     Fill City    Bruxelles
     Fill State    DC    District of Columbia
-    Select A Male Gender
+    Select A Gender   male
     Click on "Receiving Promos"
 
 
 Fill "Customer Form" with Known Profile
     [Arguments]    ${custom_profile}
-    Fill Email    ${custom_profile}[email]
-    Fill FirstName    ${custom_profile}[first_name]
-    Fill LastName    ${custom_profile}[last_name]
-    Fill City    ${custom_profile}[city]
-    Fill State    ${custom_profile}[state_value]    ${custom_profile}[state_label]
-    Select A Male Gender
+    Fill Email                ${custom_profile}[email]
+    Fill FirstName            ${custom_profile}[first_name]
+    Fill LastName             ${custom_profile}[last_name]
+    Fill City                 ${custom_profile}[city]
+    Fill State                ${custom_profile}[state_value]    ${custom_profile}[state_label]
+    Select A Gender           ${custom_profile}[gender]
     Click on "Receiving Promos"
 
 Fill Email
@@ -58,11 +60,9 @@ Fill State
     Select From List By Value    ${SELECT_STATE_NAME}    ${district_value}
     Page Should Contain    ${district_label}
 
-Select A Female Gender
-    Select Radio Button    gender    female
-
-Select A Male Gender
-    Select Radio Button    gender    male
+Select A Gender
+    [Arguments]    ${gender}
+    Select Radio Button    ${BUTTON_GENDER_NAME}    ${gender}
 
 Submit Customer
     Click Button    Submit
