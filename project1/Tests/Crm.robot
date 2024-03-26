@@ -16,12 +16,6 @@ ${VALID_LOGIN_PASSWORD}=    toto
 
 *** Test Cases ***
 
-# Log List Variables
-#     FOR    ${item}    IN    @{MY_LIST}
-#         Log    ${item}
-#     END
-#     Log    ${MY_LIST}[2]
-
 # Log Dict Variables
 #     FOR   ${key}    ${value}    IN    &{MY_DICT}
 #         Log Many    ${key}    ${value}
