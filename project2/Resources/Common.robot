@@ -20,7 +20,7 @@ Resize Browser
     # Maximize Browser Window
 
 Choose Manually Browser
-    ${new_browser}=    Get Selection From User    Which browser ?    edge    firefox
+    ${new_browser}=    Get Selection From User    Which browser ?    edge    firefox    chrome
     Open Browser    about:blank    ${new_browser}
 
 Wait And Close Browser
