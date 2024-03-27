@@ -1,16 +1,12 @@
 *** Settings ***
 Library  SeleniumLibrary
-Library    XML
+Resource    ../../Data/url.robot
 
 
 *** Variables ***
 ${LANDING_INTRO_TITLE}=    It's Nice To Meet You
 ${LANDING_INTRO_SUBTITLE}=    Welcome To Our Studio!
-###
 ${LANDING_LINK_TITLE}=    Tell Me More
-###
-${LANDING_PAGE_URL}=    https://automationplayground.com/front-office/
-
 
 
 *** Keywords ***

@@ -8,7 +8,7 @@ ${ADD_CUSTOMER_SUCESS_TITLE}=    Success
 ${ADD_CUSTOMER_SUCESS_LABEL}=    Success! New customer added.
 ${CUSTOMER_URL}=                 customers.html
 ${CUSTOMER_TITLE}=               Our Happy Customers
-${CUSTOMER_ROW_LOCATOR}=         //html/body/div/div/table/tbody/tr
+${CUSTOMER_ROW_LOCATOR}=         //table[@id='customers']//tr
 
 *** Keywords ***
 

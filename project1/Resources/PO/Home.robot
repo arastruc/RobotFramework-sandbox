@@ -1,10 +1,10 @@
 *** Settings ***
 Library  SeleniumLibrary
+Resource    ../../Data/urls.robot
 
 
 *** Variables ***
 ${HOME_HEADER_LABEL}=    Customers Are Priority One!
-${HOME_URL}=             https://automationplayground.com/crm/
 
 
 *** Keywords ***

@@ -1,8 +1,8 @@
 *** Settings ***
 Library        RequestsLibrary
+Resource       ../Data/url.robot
 
-*** Variables ***
-${SWAPI_URL}=     https://swapi.dev/api/
+
 
 *** Keywords ***
 Create Default Session
