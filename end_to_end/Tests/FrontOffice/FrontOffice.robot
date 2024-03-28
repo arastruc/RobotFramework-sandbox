@@ -1,13 +1,10 @@
 *** Settings ***
-Resource    ../Resources/Common.robot
-Resource    ../Resources/FrontOfficeApp.robot
+Resource    ../../Resources/Common/Common.robot
+Resource    ../../Resources/FrontOffice/FrontOfficeApp.robot
 
-Test Setup        Sleep    1
-Suite Setup       Common.Open Manually And Resize Browser
-Suite Teardown    Common.Wait And Close Browser
-
-*** Variables ***
-${BROWSER}=        firefox
+Test Setup       Sleep    1
+Suite Setup      Common.Open Manually And Resize Browser
+Suite Teardown   Common.Wait And Close Browser
 
 
 *** Keywords ***
@@ -18,7 +15,6 @@ Failed Keyword
 
 Landing page should be displayed	
     [Tags]    1001    Smoke    Landing
-    Set Global Variable    ${OUTPUT_DIR}    C:\\Users\\aastr\\OneDrive\\Documents\\Roboframework\\project2\\Results
     FrontOfficeApp.Go to Landing Page
     Run Keyword And Ignore Error       Failed Keyword
     Run Keyword And Warn On Failure    Failed Keyword
@@ -60,7 +56,7 @@ Should be able to access "About" Page
     FrontOfficeApp.Validate "About" Page
 
 Should be able to access "Team" Page
-    [Tags]    10050    Smoke    Team
+    [Tags]    10050    Functional    Team
     FrontOfficeApp.Go to Landing Page
     FrontOfficeApp.Go to "Team" Page
 
